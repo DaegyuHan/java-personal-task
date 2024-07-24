@@ -47,7 +47,7 @@ public class App {
                 System.out.println("정확한 값을 입력해주세요.");
             }
 
-            resultArr[count] = result;
+            resultArr[count] = result;          // 0 으로 초기화된 count 값부터 시작해서 resultArr 배열에 result 값 저장
             System.out.println(Arrays.toString(resultArr));
             count++;
 
