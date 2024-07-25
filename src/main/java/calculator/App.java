@@ -1,16 +1,15 @@
 package calculator;
-import java.util.Arrays;
 import java.util.Scanner;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class App {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int restart = 1;    // 계산기 반복문 접근 위한 변수
-        int[] resultArr = new int[10];  // 10 크기의 배열
-        int count = 0;  // 배열에 접근하기 위한 count 변수
-
+        int restart = 1;                                    // 계산기 반복문 접근 위한 변수
+        Queue<Integer> resultQue = new LinkedList<>();      //무제한으로  저장하기 위해서 Queue 선언
         while (restart ==1) {
 
         int result = 0; //result 선언 및 초기화
@@ -47,18 +46,47 @@ public class App {
                 System.out.println("정확한 값을 입력해주세요.");
             }
 
+            resultQue.add(result);
 
-
-            if ( count < 10 ) {
-                resultArr[count] = result;          // 0 으로 초기화된 count 값부터 시작해서 resultArr 배열에 result 값 저장
-                System.out.println(Arrays.toString(resultArr));
-                count++;
-            } else if ( count >= 10) {              // 저장 데이터가 10개가 넘으면 반복문을 통해 배열 요소를 하나씩 앞으로 옮김
-                for (int i =1; i<=9; i++) {
-                    resultArr[i-1] = resultArr[i];
+            int ask_delete_replay = 0;          // 연산결과 삭제 유무 질문에 올바른 답을 얻기 위한 반복문 진입 변수
+            while (ask_delete_replay == 0) {
+                System.out.println("""
+                        가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (숫자 입력)
+                        1.yes
+                        2.no""");
+                int ask_delete = sc.nextInt();
+                if (ask_delete == 1) {
+                    ask_delete_replay = 1;
+                    resultQue.poll();
+                } else if (ask_delete == 2) {
+                    ask_delete_replay = 1;
+                    continue;
+                } else {
+                    System.out.println("정확한 값을 입력해주세요.");
                 }
-                resultArr[9] = result;
-                System.out.println(Arrays.toString(resultArr));
+            }
+
+            int ask_inquiry_replay = 0;         // 연산결과 출력 희망 질문에 올바른 답 얻기 위한 진입 변수
+            while (ask_inquiry_replay == 0) {
+                System.out.println("""
+                        저장된 연산결과를 조회하시겠습니까? (숫자 입력)
+                        1.yes
+                        2.no
+                        """);
+                int ask_inquiry = sc.nextInt();
+                if (ask_inquiry == 1) {
+                    System.out.print("저장된 값 :");
+                    for (int value : resultQue) {
+                        System.out.print(" " + value);
+                        ask_inquiry_replay = 1;
+                    }
+                    System.out.println(" ");
+                } else if (ask_inquiry == 2) {
+                    ask_inquiry_replay = 1;
+                    continue;
+                } else {
+                    System.out.println("정확한 값을 입력해주세요.");
+                }
             }
 
 
