@@ -41,7 +41,7 @@ public class App {
                         2.no""");
                 int askDelete = sc.nextInt();
                 try {
-                    askDeleteReplay = calculator.removeResult(askDelete);
+                    askDeleteReplay = calculator.removeResult(askDelete); // askDeleteReplay 반환
                 } catch (MessageException e) {
                     System.out.println(e.getMessage());
 
