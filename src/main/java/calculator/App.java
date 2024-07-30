@@ -10,6 +10,8 @@ public class App {
         Scanner sc = new Scanner(System.in);
 
         Calculator calculator = new Calculator();
+        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator();
+        CircleCalculator circleCalculator = new CircleCalculator();
 
         int restart = 1;                                    // 계산기 반복문 접근 위한 변수
         int checking = 1;
@@ -34,7 +36,7 @@ public class App {
 
 
                     try {
-                        System.out.println("계산 결과 : " + calculator.calculate(num1, num2, operation));
+                        System.out.println("계산 결과 : " + arithmeticCalculator.calculate(num1, num2, operation));
                         checking = 2;
                     } catch (MessageException e) {
                         System.out.println(e.getMessage());
@@ -74,27 +76,27 @@ public class App {
             } else if (pickCalculator == 2) {
                 System.out.println("반지름을 입력하세요.");
                 double radius = sc.nextDouble();
-                double pieResult = calculator.pieCalculate(radius);
+                double pieResult = circleCalculator.pieCalculate(radius);
                 System.out.println("원의 넓이 : " + pieResult);
                 calculator.inquiryPieResult();
             }
 
-                int ask_replay = 0;     // 다시 계산하기 위한 반복문 제어용 변수 선언,초기화
+                int askReplay = 0;     // 다시 계산하기 위한 반복문 제어용 변수 선언,초기화
 
-                while (ask_replay == 0) {
+                while (askReplay == 0) {
                     System.out.println("""
                             더 계산하시겠습니까? (숫자 입력)
                             1.yes
                             2.no""");
-                    ask_replay = sc.nextInt();
-                    if (ask_replay == 1) {
+                    askReplay = sc.nextInt();
+                    if (askReplay == 1) {
                         checking = 1;
                         break;
-                    } else if (ask_replay == 2) {
+                    } else if (askReplay == 2) {
                         restart = 2;
                     } else {
                         System.out.println("정확한 값을 입력해주세요.");
-                        ask_replay = 0;
+                        askReplay = 0;
                     }
                 }
 
