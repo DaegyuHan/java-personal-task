@@ -5,7 +5,7 @@ import java.util.Queue;
 
 public class Calculator {
 
-    private  Queue<Integer> resultQue = new LinkedList<>(); //무제한으로  저장하기 위해서 Queue 선언
+    private static Queue<Integer> resultQue = new LinkedList<>(); //무제한으로  저장하기 위해서 Queue 선언
 
     public Queue<Integer> getResultQue() {
         return resultQue;
@@ -44,7 +44,7 @@ public class Calculator {
     }
 
     public int removeResult(int askDelete) throws MessageException {
-        int askDeleteReplay=0;
+        int askDeleteReplay = 0;
 
         if (askDelete == 1) {
             askDeleteReplay = 1;
@@ -57,4 +57,21 @@ public class Calculator {
         return askDeleteReplay;
     }
 
+    public int inquiryResults(int askInquiry) throws MessageException {
+        int askInquiryReplay = 0;
+
+        if (askInquiry == 1) {
+            System.out.print("저장된 값 :");
+            for (int value : resultQue) {
+                System.out.print(" " + value);
+                askInquiryReplay = 1;
+            }
+            System.out.println(" ");
+        } else if (askInquiry == 2) {
+            askInquiryReplay = 1;
+        } else {
+            throw new MessageException("올바른 숫자를 입력해주세요.");
+        }
+        return askInquiryReplay;
+    }
 }
