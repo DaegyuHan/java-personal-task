@@ -43,4 +43,18 @@ public class Calculator {
         return result;
     }
 
+    public int removeResult(int askDelete) throws MessageException {
+        int askDeleteReplay=0;
+
+        if (askDelete == 1) {
+            askDeleteReplay = 1;
+            resultQue.poll();
+        } else if (askDelete == 2) {
+            askDeleteReplay = 1;
+        } else {
+            throw new MessageException("올바른 숫자를 입력해주세요.");
+        }
+        return askDeleteReplay;
+    }
+
 }

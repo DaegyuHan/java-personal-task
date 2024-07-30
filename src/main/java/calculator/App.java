@@ -10,8 +10,6 @@ public class App {
         Scanner sc = new Scanner(System.in);
 
         int restart = 1;                                    // 계산기 반복문 접근 위한 변수
-        int a;
-
 
         while (restart == 1) {
 
@@ -35,21 +33,18 @@ public class App {
             }
 
 
-            int ask_delete_replay = 0;          // 연산결과 삭제 유무 질문에 올바른 답을 얻기 위한 반복문 진입 변수
-            while (ask_delete_replay == 0) {
+            int askDeleteReplay = 0;          // 연산결과 삭제 유무 질문에 올바른 답을 얻기 위한 반복문 진입 변수
+            while (askDeleteReplay == 0) {
                 System.out.println("""
                         가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (숫자 입력)
                         1.yes
                         2.no""");
-                int ask_delete = sc.nextInt();
-                if (ask_delete == 1) {
-                    ask_delete_replay = 1;
-//                    resultQue.poll();
-                } else if (ask_delete == 2) {
-                    ask_delete_replay = 1;
-                    continue;
-                } else {
-                    System.out.println("정확한 값을 입력해주세요.");
+                int askDelete = sc.nextInt();
+                try {
+                    askDeleteReplay = calculator.removeResult(askDelete);
+                } catch (MessageException e) {
+                    System.out.println(e.getMessage());
+
                 }
             }
 
