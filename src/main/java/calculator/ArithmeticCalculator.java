@@ -21,7 +21,7 @@ public class ArithmeticCalculator extends Calculator {
         double result = 0;
         switch (operation) {
             case '+':
-                result = addOperator.operate(num1, num2);
+                result = addOperator.operate(num1, num2);   // 인터페이스를 이용한 코드 단순화
                 break;
             case '-':
                 result = subtractOperator.operate(num1, num2);
