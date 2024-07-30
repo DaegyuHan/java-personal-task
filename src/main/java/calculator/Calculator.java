@@ -4,10 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Calculator {
-        int num1;
-        int num2;
-        char operation;
-        int result;
+
     private  Queue<Integer> resultQue = new LinkedList<>(); //무제한으로  저장하기 위해서 Queue 선언
 
     public Queue<Integer> getResultQue() {
@@ -18,14 +15,10 @@ public class Calculator {
         resultQue.add(result);
     }
 
-    public Calculator() {
-        this.num1 = num1;
-        this.num2 = num2;
-        this.operation = operation;
-    }
 
-    public int calculate() throws MessageException {
+    public int calculate(int num1, int num2, char operation) throws MessageException {
 
+        int result = 0;
         switch (operation) {
             case '+':
                 result = num1 + num2;
