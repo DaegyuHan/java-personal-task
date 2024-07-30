@@ -9,7 +9,8 @@ public class App {
         Scanner sc = new Scanner(System.in);
 
         int restart = 1;                                    // 계산기 반복문 접근 위한 변수
-        Queue<Integer> resultQue = new LinkedList<>();      //무제한으로  저장하기 위해서 Queue 선언
+        int a;
+
 
         while (restart ==1) {
 
@@ -25,15 +26,16 @@ public class App {
 
                 Calculator calculator = new Calculator(num1, num2, operation);
                 try {
-                    calculator.calculate();
-                } catch (messageException e) {
+                    System.out.println(calculator.calculate());
+
+                } catch (MessageException e) {
                     System.out.println(e.getMessage());
 
                 }
 
 
 
-            resultQue.add(calculator.result);
+
 
             int ask_delete_replay = 0;          // 연산결과 삭제 유무 질문에 올바른 답을 얻기 위한 반복문 진입 변수
             while (ask_delete_replay == 0) {
