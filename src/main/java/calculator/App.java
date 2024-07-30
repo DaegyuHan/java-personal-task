@@ -9,10 +9,13 @@ public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
+        Calculator calculator = new Calculator();
+
         int restart = 1;                                    // 계산기 반복문 접근 위한 변수
         int checking = 1;
+
         while (restart == 1) {
-            Calculator calculator = new Calculator();
+
             while (checking == 1) {
                 System.out.println("------------------------");
                 System.out.println("첫 번째 숫자를 입력하세요: ");

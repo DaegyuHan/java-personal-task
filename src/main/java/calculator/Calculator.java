@@ -5,7 +5,12 @@ import java.util.Queue;
 
 public class Calculator {
 
-    private static Queue<Integer> resultQue = new LinkedList<>(); //무제한으로  저장하기 위해서 Queue 선언
+    private static Queue<Integer> resultQue; //무제한으로  저장하기 위해서 Queue 선언
+
+
+    public Calculator() {
+        resultQue = new LinkedList<>();
+    }
 
     public Queue<Integer> getResultQue() {
         return resultQue;
@@ -14,7 +19,6 @@ public class Calculator {
     public void setResultQue(int result) {
         resultQue.add(result);
     }
-
 
     public int calculate(int num1, int num2, char operation) throws MessageException {
 
