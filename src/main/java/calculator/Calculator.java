@@ -6,10 +6,12 @@ import java.util.Queue;
 public class Calculator {
 
     private static Queue<Integer> resultQue; //무제한으로  저장하기 위해서 Queue 선언
-
+    private static Queue<Double> pieResultQue; // 원 넓이 계산
+    final double PI = 3.14; // 원주율 PI 는 바뀌지 않으므로 final 을 사용했다.
 
     public Calculator() {
         resultQue = new LinkedList<>();
+        pieResultQue = new LinkedList<>();
     }
 
     public Queue<Integer> getResultQue() {
@@ -18,6 +20,14 @@ public class Calculator {
 
     public void setResultQue(int result) {
         resultQue.add(result);
+    }
+
+    public Queue<Double> getPieResultQue() {
+        return pieResultQue;
+    }
+
+    public void setPieResultQue(double result) {
+        pieResultQue.add(result);
     }
 
     public int calculate(int num1, int num2, char operation) throws MessageException {
@@ -78,4 +88,20 @@ public class Calculator {
         }
         return askInquiryReplay;
     }
-}
+
+    public double pieCalculate(double radius) {
+        double result = radius * radius *PI;
+        pieResultQue.add(result);
+        return result;
+    }
+
+    public void inquiryPieResult() {
+
+            System.out.print("저장된 값 :");
+            for (double value : pieResultQue) {
+                System.out.print(" " + value);
+            }
+            System.out.println(" ");
+        }
+    }
+
