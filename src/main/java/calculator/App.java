@@ -10,43 +10,30 @@ public class App {
 
         int restart = 1;                                    // 계산기 반복문 접근 위한 변수
         Queue<Integer> resultQue = new LinkedList<>();      //무제한으로  저장하기 위해서 Queue 선언
+
         while (restart ==1) {
 
-        int result = 0; //result 선언 및 초기화
-        System.out.println("------------------------");
-        System.out.println("첫 번째 숫자를 입력하세요: ");
-        int num1 = sc.nextInt();
-        System.out.println("두 번째 숫자를 입력하세요: ");
-        int num2 = sc.nextInt();
-        System.out.println("사칙연산 기호를 입력하세요: "); // +, -, *, /
-        char operation = sc.next().charAt(0);
+
+                System.out.println("------------------------");
+                System.out.println("첫 번째 숫자를 입력하세요: ");
+                int num1 = sc.nextInt();
+                System.out.println("두 번째 숫자를 입력하세요: ");
+                int num2 = sc.nextInt();
+                System.out.println("사칙연산 기호를 입력하세요: "); // +, -, *, /
+                char operation = sc.next().charAt(0);
 
 
-            if (operation == '+') {   // 덧셈 연산
-                result = num1 + num2;
-                System.out.println("결과 : " + result);
-                System.out.println("------------------------");
-            } else if (operation == '-') {   // 뺄셈 연산
-                result = num1 - num2;
-                System.out.println("결과 : " + result);
-                System.out.println("------------------------");
-            } else if (operation == '*') {   // 곱셈 연산
-                result = num1 * num2;
-                System.out.println("결과 : " + result);
-                System.out.println("------------------------");
-            } else if (operation == '/') {   // 나눗셈 연산
-                if (num2 == 0) {
-                    System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
-                } else {
-                    result = num1 / num2;
-                    System.out.println("결과 : " + result);
-                    System.out.println("------------------------");
+                Calculator calculator = new Calculator(num1, num2, operation);
+                try {
+                    calculator.calculate();
+                } catch (messageException e) {
+                    System.out.println(e.getMessage());
+
                 }
-            } else {
-                System.out.println("정확한 값을 입력해주세요.");
-            }
 
-            resultQue.add(result);
+
+
+            resultQue.add(calculator.result);
 
             int ask_delete_replay = 0;          // 연산결과 삭제 유무 질문에 올바른 답을 얻기 위한 반복문 진입 변수
             while (ask_delete_replay == 0) {
